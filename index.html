@@ -5,7 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Save the Universe – UNIVERS ONGD</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Source+Sans+3:wght@400;600&display=swap">
-.members {
+<style>
+:root{
+  --bg:#F4F7F3; --surface:#FFFFFF; --ink:#13271F; --muted:#4F6359; --line:#CBD6CE;
+  --deep:#0F3B30; --leaf:#2F7D4F; --sun:#E9B824; --on-deep:#F4F7F3;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+  .members {
   list-style: none;
   padding: 0;
   margin: 12px 0 0;
@@ -14,14 +23,6 @@
 .members li {
   padding: 6px 0;
   border-top: 1px solid rgba(0,0,0,.1);
-}<style>
-:root{
-  --bg:#F4F7F3; --surface:#FFFFFF; --ink:#13271F; --muted:#4F6359; --line:#CBD6CE;
-  --deep:#0F3B30; --leaf:#2F7D4F; --sun:#E9B824; --on-deep:#F4F7F3;
-  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
-  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
-  color-scheme:light;
-  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){--bg:#0C1814;--surface:#12251F;--ink:#E8EFEA;--muted:#9DB2A7;--line:#254238;--deep:#08241C;--leaf:#5DBB82;--sun:#F0C43A;color-scheme:dark}
