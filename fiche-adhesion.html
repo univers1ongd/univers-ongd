@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fiche d’adhésion – UNIVERS ONGD</title>
+<style>
+:root{--bg:#0b1512;--card:#13231e;--line:#244036;--txt:#e9f2ee;--mut:#9db8ad;--acc:#4cc17a;--err:#ff8a80}
+@media (prefers-color-scheme: light){:root{--bg:#f3f8f5;--card:#fff;--line:#cfe0d6;--txt:#12261f;--mut:#4d6b5e;--acc:#1f8a4c;--err:#c62828}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+a{color:var(--acc)}
+h1{font-size:1.6rem;margin:.4em 0 .2em}
+.sub{color:var(--mut);margin:0 0 1.2em}
+fieldset{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:16px;margin:0 0 18px}
+legend{padding:0 8px;font-weight:700;color:var(--acc)}
+label{display:block;font-weight:600;margin:12px 0 4px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+input[type=text],input[type=tel],input[type=email],input[type=date],textarea{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--txt);font:inherit}
+textarea{min-height:90px;resize:vertical}
+.opts{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:4px}
+.opts label{display:flex;align-items:center;gap:6px;font-weight:400;margin:0}
+.eng{color:var(--mut);font-size:.95rem;margin:.2em 0 .6em}
+.eng li{margin:.15em 0}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+button,.btn{font:inherit;font-weight:700;border-radius:10px;padding:12px 18px;cursor:pointer;text-decoration:none;display:inline-block;border:1px solid var(--acc)}
+.primary{background:var(--acc);color:#04170d}
+.second{background:transparent;color:var(--acc)}
+#msg{margin-top:14px;min-height:1.4em}
+.err{color:var(--err)}
+.ok{color:var(--acc)}
+.note{color:var(--mut);font-size:.9rem;margin-top:18px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p><a href="index.html">← Retour au site</a></p>
+  <h1>Fiche individuelle d’adhésion</h1>
+  <p class="sub">SAVE THE UNIVERSE-DRC ASBL – Kisangani, République Démocratique du Congo.<br>
+  Remplissez les rubriques I à III, générez votre fiche en PDF, imprimez-la, signez-la et envoyez-la à l’organisation. La partie « Réservée à l’administration » est complétée par l’organisation.</p>
+
+  <form id="fiche" novalidate>
+    <fieldset>
+      <legend>I. Identification du membre</legend>
+      <div class="row">
+        <div><label for="nom">Nom *</label><input type="text" id="nom" autocomplete="family-name"></div>
+        <div><label for="postnom">Postnom</label><input type="text" id="postnom"></div>
+      </div>
+      <label for="prenom">Prénom *</label><input type="text" id="prenom" autocomplete="given-name">
+
+      <label>Sexe *</label>
+      <div class="opts">
+        <label><input type="radio" name="sexe" value="Masculin"> Masculin</label>
+        <label><input type="radio" name="sexe" value="Féminin"> Féminin</label>
+      </div>
+
+      <div class="row">
+        <div><label for="dnaiss">Date de naissance</label><input type="date" id="dnaiss"></div>
+        <div><label for="lnaiss">Lieu de naissance</label><input type="text" id="lnaiss"></div>
+      </div>
+
+      <label>État civil</label>
+      <div class="opts">
+        <label><input type="radio" name="civil" value="Célibataire"> Célibataire</label>
+        <label><input type="radio" name="civil" value="Marié(e)"> Marié(e)</label>
+        <label><input type="radio" name="civil" value="Autre"> Autre</label>
+      </div>
+      <input type="text" id="civilAutre" placeholder="Si autre, précisez" style="margin-top:8px">
+
+      <div class="row">
+        <div><label for="nation">Nationalité</label><input type="text" id="nation"></div>
+        <div><label for="prof">Profession</label><input type="text" id="prof"></div>
+      </div>
+      <label for="etudes">Niveau d’études</label><input type="text" id="etudes">
+      <label for="adresse">Adresse physique</label><input type="text" id="adresse" autocomplete="street-address">
+      <div class="row">
+        <div><label for="tel">Téléphone *</label><input type="tel" id="tel" autocomplete="tel"></div>
+        <div><label for="mail">Adresse e-mail</label><input type="email" id="mail" autocomplete="email"></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>II. Informations sur l’adhésion</legend>
+      <label>Catégorie de membre *</label>
+      <div class="opts">
+        <label><input type="radio" name="cat" value="Membre fondateur"> Membre fondateur</label>
+        <label><input type="radio" name="cat" value="Membre effectif"> Membre effectif</label>
+        <label><input type="radio" name="cat" value="Membre adhérent"> Membre adhérent</label>
+        <label><input type="radio" name="cat" value="Membre sympathisant"> Membre sympathisant</label>
+      </div>
+      <label for="domaine">Domaine d’intérêt ou de compétence</label><input type="text" id="domaine">
+      <label for="motif">Motivation de l’adhésion</label><textarea id="motif"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>III. Engagement du membre</legend>
+      <p class="eng">Je déclare solliciter mon adhésion à SAVE THE UNIVERSE-DRC ASBL et je m’engage à :</p>
+      <ul class="eng">
+        <li>respecter les statuts, le règlement intérieur et les textes régissant l’organisation ;</li>
+        <li>participer activement aux activités et aux initiatives de l’organisation ;</li>
+        <li>défendre les valeurs, la vision et la mission de l’organisation ;</li>
+        <li>respecter les autres membres et les décisions des organes compétents ;</li>
+        <li>m’acquitter régulièrement des cotisations fixées par l’organisation.</li>
+      </ul>
+      <label style="display:flex;gap:8px;align-items:flex-start;font-weight:400">
+        <input type="checkbox" id="engage" style="margin-top:5px">
+        <span>Je certifie que les informations fournies dans cette fiche sont exactes. *</span>
+      </label>
+      <div class="row">
+        <div><label for="fait">Fait à</label><input type="text" id="fait"></div>
+        <div><label for="datef">Le</label><input type="date" id="datef"></div>
+      </div>
+    </fieldset>
+
+    <div class="btns">
+      <button type="button" class="primary" id="gen">Générer ma fiche (PDF)</button>
+      <a class="btn second" href="fiche-adhesion-vierge.pdf" download>Télécharger la fiche vierge</a>
+    </div>
+    <div id="msg" role="status"></div>
+    <p id="after" class="hidden">Étape suivante : imprimez la fiche, signez-la, puis envoyez-la (photo ou scan) à
+      <a id="mailto" href="mailto:universrdc1@gmail.com">universrdc1@gmail.com</a>
+      en joignant le PDF.</p>
+    <p class="note">* Rubriques obligatoires. Vos informations restent sur votre appareil : rien n’est enregistré sur le site.</p>
+  </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function(){
+  function $(id){return document.getElementById(id)}
+  function val(id){return ($(id).value||'').trim()}
+  function radio(name){var r=document.querySelector('input[name="'+name+'"]:checked');return r?r.value:''}
+  function frDate(iso){if(!iso)return '';var p=iso.split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:iso}
+  // Le PDF utilise une police standard : on remplace les caractères hors Latin-1
+  function clean(s){
+    return String(s||'')
+      .replace(/[\u2018\u2019]/g,"'").replace(/[\u201C\u201D]/g,'"')
+      .replace(/[\u2013\u2014]/g,'-').replace(/\u2026/g,'...').replace(/\u00A0/g,' ')
+      .replace(/\u0153/g,'oe').replace(/\u0152/g,'OE')
+      .replace(/[^\x09\x0A\x0D\x20-\xFF]/g,'');
+  }
+
+  // Date du jour par défaut
+  var t=new Date(),pad=function(n){return(n<10?'0':'')+n};
+  $('datef').value=t.getFullYear()+'-'+pad(t.getMonth()+1)+'-'+pad(t.getDate());
+
+  function setMsg(text,cls){var m=$('msg');m.textContent=text;m.className=cls||''}
+
+  function build(){
+    var J=window.jspdf&&window.jspdf.jsPDF;
+    if(!J){throw new Error('lib')}
+    var doc=new J({unit:'mm',format:'a4'});
+    var W=210,L=18,R=192,CW=R-L,y=0;
+    var GREEN=[31,78,121];
+
+    function footer(n,total){
+      doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(130);
+      doc.text("SAVE THE UNIVERSE-DRC ASBL | Fiche individuelle d'adhésion | Page "+n+"/"+total,W/2,290,{align:'center'});
+      doc.setTextColor(0);
+    }
+    function head(title){
+      doc.setFont('helvetica','bold');doc.setFontSize(10.5);doc.setTextColor(GREEN[0],GREEN[1],GREEN[2]);
+      doc.text(clean(title),L,y);
+      doc.setDrawColor(GREEN[0],GREEN[1],GREEN[2]);doc.setLineWidth(0.4);doc.line(L,y+1.5,R,y+1.5);
+      doc.setTextColor(0);y+=8;
+    }
+    function field(label,value){
+      doc.setFont('helvetica','bold');doc.setFontSize(10);
+      var lab=clean(label)+' : ';
+      var lw=doc.getTextWidth(lab);
+      doc.text(lab,L,y);
+      doc.setFont('helvetica','normal');
+      var lines=doc.splitTextToSize(clean(value)||' ',CW-lw-1);
+      if(!lines.length)lines=[' '];
+      for(var i=0;i<lines.length;i++){
+        doc.text(lines[i],L+lw,y);
+        doc.setDrawColor(170);doc.setLineWidth(0.15);
+        doc.line(L+lw,y+1.2,R,y+1.2);
+        if(i<lines.length-1)y+=5.5;
+      }
+      y+=7;
+    }
+    function box(x,yy,checked){
+      doc.setDrawColor(0);doc.setLineWidth(0.3);doc.rect(x,yy-3,3.3,3.3);
+      if(checked){doc.setLineWidth(0.5);doc.line(x+0.5,yy-2.5,x+2.8,yy-0.2);doc.line(x+2.8,yy-2.5,x+0.5,yy-0.2)}
+    }
+    function checks(x,items,sel,yy){
+      doc.setFont('helvetica','normal');doc.setFontSize(10);
+      for(var i=0;i<items.length;i++){
+        box(x,yy,sel===items[i]);
+        doc.text(clean(items[i]),x+5,yy);
+        x+=5+doc.getTextWidth(clean(items[i]))+6;
+      }
+    }
+
+    // ---------- PAGE 1 ----------
+    y=20;
+    doc.setFont('helvetica','bold');doc.setFontSize(15);doc.setTextColor(GREEN[0],GREEN[1],GREEN[2]);
+    doc.text('SAVE THE UNIVERSE-DRC ASBL',W/2,y,{align:'center'});y+=6;
+    doc.setFontSize(8.5);doc.setTextColor(90);
+    doc.text('ORGANISATION NON GOUVERNEMENTALE DE DÉVELOPPEMENT',W/2,y,{align:'center'});y+=4.5;
+    doc.setFont('helvetica','italic');
+    doc.text('Siège social : Kisangani - République Démocratique du Congo',W/2,y,{align:'center'});y+=8;
+    doc.setFont('helvetica','bold');doc.setFontSize(13);doc.setTextColor(GREEN[0],GREEN[1],GREEN[2]);
+    doc.text("FICHE INDIVIDUELLE D'ADHÉSION",W/2,y,{align:'center'});y+=7;
+    doc.setTextColor(0);doc.setFontSize(10);
+    doc.text('N\u00B0 : ....../STU-DRC/......',W/2,y,{align:'center'});y+=10;
+
+    head('I. IDENTIFICATION DU MEMBRE');
+    field('Nom',val('nom'));
+    field('Postnom',val('postnom'));
+    field('Prénom',val('prenom'));
+    doc.setFont('helvetica','bold');doc.setFontSize(10);doc.text('Sexe : ',L,y);
+    checks(L+doc.getTextWidth('Sexe : '),['Masculin','Féminin'],radio('sexe'),y);y+=7;
+    var naiss=[frDate($('dnaiss').value),val('lnaiss')].filter(Boolean).join(' à ');
+    field('Date et lieu de naissance',naiss);
+    var civ=radio('civil');
+    doc.setFont('helvetica','bold');doc.setFontSize(10);doc.text('État civil : ',L,y);
+    var cx=L+doc.getTextWidth('État civil : ');
+    checks(cx,['Célibataire','Marié(e)','Autre'],civ,y);
+    if(civ==='Autre'&&val('civilAutre')){doc.setFont('helvetica','normal');doc.text(': '+clean(val('civilAutre')),R-45,y)}
+    y+=7;
+    field('Nationalité',val('nation'));
+    field('Profession',val('prof'));
+    field("Niveau d'études",val('etudes'));
+    field('Adresse physique',val('adresse'));
+    field('Téléphone',val('tel'));
+    field('Adresse e-mail',val('mail'));
+    y+=2;
+
+    head("II. INFORMATIONS SUR L'ADHÉSION");
+    doc.setFont('helvetica','bold');doc.setFontSize(10);doc.text('Catégorie de membre :',L,y);y+=6;
+    checks(L+2,['Membre fondateur','Membre effectif','Membre adhérent','Membre sympathisant'],radio('cat'),y);y+=8;
+    field("Domaine d'intérêt ou de compétence",val('domaine'));
+    field("Motivation de l'adhésion",val('motif'));
+    y+=2;
+
+    head('III. ENGAGEMENT DU MEMBRE');
+    doc.setFont('helvetica','normal');doc.setFontSize(9.5);
+    doc.text("Je soussigné(e), déclare solliciter mon adhésion à SAVE THE UNIVERSE-DRC ASBL.",L,y);y+=5.5;
+    doc.text("Je m'engage à :",L,y);y+=5;
+    var eng=["Respecter les statuts, le règlement intérieur et les textes régissant l'organisation ;",
+      "Participer activement aux activités et aux initiatives de l'organisation ;",
+      "Défendre les valeurs, la vision et la mission de l'organisation ;",
+      "Respecter les autres membres et les décisions des organes compétents ;",
+      "M'acquitter régulièrement des cotisations fixées par l'organisation."];
+    for(var i=0;i<eng.length;i++){doc.text('-  '+clean(eng[i]),L+3,y);y+=5}
+    y+=1;
+    doc.text("Je certifie que les informations fournies dans cette fiche sont exactes.",L,y);
+    footer(1,2);
+
+    // ---------- PAGE 2 ----------
+    doc.addPage();y=22;
+    head("IV. VALIDATION DE L'ADHÉSION");
+    field('Fait à',val('fait'));
+    field('Le',frDate($('datef').value));
+    y+=2;
+    var bw=(CW-6)/2,bh=34,by=y;
+    doc.setDrawColor(0);doc.setLineWidth(0.3);
+    doc.rect(L,by,bw,bh);
+    doc.setFillColor(232,232,232);doc.rect(L+bw+6,by,bw,bh,'FD');
+    doc.setFont('helvetica','bold');doc.setFontSize(9);
+    doc.text('SIGNATURE DU DEMANDEUR',L+bw/2,by+5.5,{align:'center'});
+    doc.text("RÉSERVÉ À L'ADMINISTRATION",L+bw+6+bw/2,by+5.5,{align:'center'});
+    doc.setFont('helvetica','normal');
+    doc.text('Nom et signature :',L+3,by+12);
+    doc.text('Nom et signature :',L+bw+9,by+12);
+    var nomc=clean([val('prenom'),val('nom'),val('postnom')].filter(Boolean).join(' '));
+    if(nomc){doc.setFontSize(8.5);doc.setTextColor(90);doc.text(nomc,L+3,by+bh-3);doc.setTextColor(0)}
+    y=by+bh+12;
+
+    // Section V : cadre grisé, réservé à l'organisation
+    var vtop=y-6,vh=96;
+    doc.setFillColor(238,238,238);doc.setDrawColor(150);doc.setLineWidth(0.3);
+    doc.rect(L-3,vtop,CW+6,vh,'FD');
+    doc.setFont('helvetica','bold');doc.setFontSize(10.5);doc.setTextColor(GREEN[0],GREEN[1],GREEN[2]);
+    doc.text("V. DÉCISION ET VALIDATION ADMINISTRATIVE",L,y);
+    doc.setDrawColor(GREEN[0],GREEN[1],GREEN[2]);doc.setLineWidth(0.4);doc.line(L,y+1.5,R,y+1.5);
+    y+=6;
+    doc.setFont('helvetica','italic');doc.setFontSize(8.5);doc.setTextColor(100);
+    doc.text("Cadre réservé à l'organisation - le demandeur ne doit rien inscrire ci-dessous.",L,y);
+    doc.setTextColor(0);y+=8;
+    doc.setFont('helvetica','bold');doc.setFontSize(10);
+    doc.text('Décision : ',L,y);
+    var dx=L+doc.getTextWidth('Décision : ');
+    checks(dx,['Adhésion acceptée','Adhésion rejetée'],'',y);
+    y+=9;
+    field('Date de validation','');
+    field('Numéro matricule du membre','');
+    field("Montant des frais d'adhésion",'');
+    field('Cotisation mensuelle','');
+    field('Nom et signature du responsable','');
+    y+=2;
+    doc.setFont('helvetica','bold');doc.setFontSize(9);
+    doc.text("CACHET OFFICIEL DE L'ORGANISATION",R,vtop+vh-4,{align:'right'});
+    footer(2,2);
+    return doc;
+  }
+
+  $('gen').addEventListener('click',function(){
+    var miss=[];
+    if(!val('nom'))miss.push('Nom');
+    if(!val('prenom'))miss.push('Prénom');
+    if(!radio('sexe'))miss.push('Sexe');
+    if(!val('tel'))miss.push('Téléphone');
+    if(!radio('cat'))miss.push('Catégorie de membre');
+    if(!$('engage').checked)miss.push('Certification des informations');
+    if(miss.length){setMsg('Veuillez compléter : '+miss.join(', ')+'.','err');return}
+    try{
+      var doc=build();
+      var nm=(val('nom')+'_'+val('prenom')).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9_-]+/g,'_');
+      doc.save('Fiche_adhesion_'+nm+'.pdf');
+      setMsg('Votre fiche PDF a été générée.','ok');
+      $('after').className='';
+      $('mailto').href='mailto:universrdc1@gmail.com?subject='+encodeURIComponent("Fiche d'adhésion - "+val('prenom')+' '+val('nom'))+'&body='+encodeURIComponent("Bonjour,\n\nVeuillez trouver ci-joint ma fiche d'adhésion signée.\n\nCordialement,\n"+val('prenom')+' '+val('nom'));
+    }catch(e){
+      setMsg(e.message==='lib'?"Le générateur PDF n'a pas pu se charger (vérifiez votre connexion internet) puis réessayez.":"Une erreur est survenue lors de la création du PDF.",'err');
+      if(window.console)console.error(e);
+    }
+  });
+})();
+</script>
+</body>
+</html>
