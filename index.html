@@ -461,14 +461,23 @@ footer{padding:32px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 </script>
 <script>
 (function(){
-  var D={projets:[],realisations:[],actualites:[],publications:[],galerie:[],partenaires:[]};
+ var D={projets:[],realisations:[],actualites:[
+  {
+    titre:"Participation à la réunion des acteurs humanitaires à l’OMS",
+    date:"Mercredi 4 Novembre 2026",
+    lieu:"Bureau de l’OMS",
+    texte:"UNIVERS ONGD a pris part à la réunion des grands acteurs humanitaires organisée au bureau de l’OMS, à travers l’un de ses membres.",
+    images:["images/reunion-oms-1.jpg","images/reunion-oms-2.jpg"]
+  }
+],publications:[],galerie:[],partenaires:[]};
   function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x)e.textContent=x;return e}
   document.querySelectorAll('[data-list]').forEach(function(box){
     var items=D[box.getAttribute('data-list')]||[];
     if(!items.length){box.className='empty';box.textContent=box.getAttribute('data-empty');return}
     items.forEach(function(it){
       var c=el('article','card');
-      if(it.image){var i=el('img');i.src=it.image;i.alt=it.legende||it.titre||it.nom||'';i.loading='lazy';c.appendChild(i)}
+    var imgs=it.images||(it.image?[it.image]:[]);
+      imgs.forEach(function(src){var i=el('img');i.src=src;i.alt=it.legende||it.titre||it.nom||'';i.loading='lazy';c.appendChild(i)});
       var b=el('div'),t=it.titre||it.nom||it.legende;
       if(t)b.appendChild(el('h3','',t));
       if(it.date||it.lieu)b.appendChild(el('p','meta',[it.date,it.lieu].filter(Boolean).join(' · ')));
