@@ -516,7 +516,7 @@ var D={
   var bar=document.querySelector('nav'),links=[].slice.call(document.querySelectorAll('nav a,.drawer-list a'));
   function route(){
     var id=decodeURIComponent((location.hash||'').slice(1))||'accueil';
-    var el=document.getElementById(id);
+    var pg=el&&el.closest('[data-page]');var page=(pg&&pg.getAttribute('data-page'))||'accueil';
     var page=(el&&el.getAttribute('data-page'))||'accueil';
     var seen=false;
     items.forEach(function(n){
